@@ -40,7 +40,7 @@ public class HamTester {
 	        String selection = ReadLine();
 	        if (selection.length()>0)
 	        {
-		        char c = selection.charAt(0);
+		        char c = selection.toUpperCase().charAt(0);
 		        switch (c)
 		        {
 			        case 'C':
@@ -79,7 +79,7 @@ public class HamTester {
 	        String selection = ReadLine();
 	        if (selection.length()>0)
 	        {
-		        char c = selection.charAt(0);
+		        char c = selection.toUpperCase().charAt(0);
 		        switch (c)
 		        {
 			        case '1':
