@@ -15,21 +15,29 @@ To build a binary in Windows, from the command line run:
 
 makeBinary.bat
 
-This will produce a Windows binary called "HamTester.exe" in the dist folder. To use the Windows binary, from the command line run:
-
-run.bat
+This will produce a Windows binary called "HamTester.exe" in the dist folder. 
 
 To build a binary in Linux, from the command line run:
 
 ./makeBinary.sh
 
-This will produce a Linux binary called "HamTester" in the dist folder.  To use the Linux binary, from the command line run:
+This will produce a Linux binary called "HamTester" in the dist folder.
+
+
+
+RUNNING THE BINARY
+
+To use the Windows binary, from the command line run:
+
+run.bat
+
+To use the Linux binary, from the command line run:
 
 ./run.sh
 
 
 
-RUNNING
+RUNNING THE JAR
 
 To run the jar in Windows, from the command line run:
 
