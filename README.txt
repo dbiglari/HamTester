@@ -25,7 +25,7 @@ To build a binary in Linux, from the command line run:
 
 This will produce a Linux binary called "HamTester" in the dist folder.  To use the Linux binary, from the command line run:
 
-./dist/HamTester
+LD_LIBRARY_PATH=$(pwd) dist/HamTester
 
 
 
