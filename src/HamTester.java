@@ -38,27 +38,28 @@ public class HamTester {
 			System.out.print("Enter selection>>>");
 
 	        String selection = ReadLine();
-			
-	        char c = selection.charAt(0);
-	        switch (c)
+	        if (selection.length()>0)
 	        {
-		        case 'C':
-		        	t = ChangeTest(t);
-		        	break;
-		        case 'R':
-		        	ResetTest(t);
-		        	break;
-		        case 'A':
-		        	AskRandomQuestions(t);
-		        	break;
-		        case 'S':
-		        	GivePracticeTest(NumPracticeTestQuestions, t);
-		        	break;
-		        case 'Q':
-		        	System.exit(0);
-		        	break;
+		        char c = selection.charAt(0);
+		        switch (c)
+		        {
+			        case 'C':
+			        	t = ChangeTest(t);
+			        	break;
+			        case 'R':
+			        	ResetTest(t);
+			        	break;
+			        case 'A':
+			        	AskRandomQuestions(t);
+			        	break;
+			        case 'S':
+			        	GivePracticeTest(NumPracticeTestQuestions, t);
+			        	break;
+			        case 'Q':
+			        	System.exit(0);
+			        	break;
+		        }
 	        }
-		
 		}
 	}
 	
@@ -76,26 +77,29 @@ public class HamTester {
 			System.out.print("Enter selection>>>");
 
 	        String selection = ReadLine();
-	        char c = selection.charAt(0);
-	        switch (c)
+	        if (selection.length()>0)
 	        {
-		        case '1':
-		        	currentTest = LoadTest(Technician_Class);
-		        	return currentTest;
-		        case '2':
-		        	currentTest = LoadTest(General_Class);
-		        	return currentTest;
-		        case '3':
-		        	currentTest = LoadTest(Extra_Class);
-		        	return currentTest;
-		        case '4':
-		    		System.out.print("Enter file name to load (absolute path or relative to current directory: "+System.getProperty("user.dir")+" ) >>>");
-		            String filename = "";		        	
-		        	currentTest = LoadTest(filename);
-		        	return currentTest;		        	
-		        case '5':
-		        	return currentTest;
-	        }        
+		        char c = selection.charAt(0);
+		        switch (c)
+		        {
+			        case '1':
+			        	currentTest = LoadTest(Technician_Class);
+			        	return currentTest;
+			        case '2':
+			        	currentTest = LoadTest(General_Class);
+			        	return currentTest;
+			        case '3':
+			        	currentTest = LoadTest(Extra_Class);
+			        	return currentTest;
+			        case '4':
+			    		System.out.print("Enter file name to load (absolute path or relative to current directory: "+System.getProperty("user.dir")+" ) >>>");
+			            String filename = "";		        	
+			        	currentTest = LoadTest(filename);
+			        	return currentTest;		        	
+			        case '5':
+			        	return currentTest;
+		        }        
+	        }
 		}
 
 	}
@@ -243,7 +247,7 @@ public class HamTester {
 			    		t.subelements.add(currentSubElement);
 			    		
 			    		// read id and description
-						String id = line.split(" ")[1].substring(0, 2);
+						String id = GetSecondWord(line).substring(0, 2);
 						int index;
 						
 						index = ("SUBELEMENT "+ id + " - ").length();
@@ -280,6 +284,7 @@ public class HamTester {
 						if (DebugTestLoader)
 						{
 							System.out.println(currentTestArea.ID + " : " + totalquestionsloaded);
+							System.out.flush();
 						}
 						
 						currentSubElement.testareas.add(currentTestArea);
@@ -304,7 +309,7 @@ public class HamTester {
 						currentTestQuestion.ID = id.trim();					
 						currentTestQuestion.reference = line;
 
-						currentTestQuestion.correctanswer = answer.replaceAll("\\p{Punct}", "");
+						currentTestQuestion.correctanswer = answer;
 						// the next line is the question text
 						currentTestQuestion.questiontext = br.readLine()+"\n";
 						currentTestQuestion.num = 1;
@@ -326,11 +331,17 @@ public class HamTester {
 					// read until ~~
 					if (line.startsWith(currentTestArea.ID))
 					{
+						if (DebugTestLoader)
+						{
+							System.out.println("Parsing question:" +totalquestionsloaded);
+							System.out.flush();
+						}
+						
 						int currentQuestionNum = currentTestQuestion.num;
 						state = TestFileState.Question;
 						
 						String formattednum = FormatString(currentQuestionNum+1);
-						String id =  currentTestArea.ID + formattednum;//String.format("%02d", (currentQuestionNum+1))+" ";
+						String id =  currentTestArea.ID + formattednum;
 						int beginindex = 0;
 
 						currentTestQuestion = new TestQuestion();
@@ -341,7 +352,7 @@ public class HamTester {
 						String answer = ParseAnswer(line);
 						currentTestQuestion.ID = id.trim();
 						currentTestQuestion.reference = line;
-						currentTestQuestion.correctanswer = answer.replaceAll("\\p{Punct}", "");
+						currentTestQuestion.correctanswer = answer;
 						// the next line is the question text
 						currentTestQuestion.questiontext = br.readLine()+"\n";
 						
@@ -354,6 +365,12 @@ public class HamTester {
 							currentTestQuestion.questiontext += line.substring(beginindex) +"\n";
 							line = br.readLine();
 						}
+						
+						if (DebugTestLoader)
+						{
+							System.out.println("Finished parsing question:" +totalquestionsloaded);
+							System.out.flush();
+						}
 					}		
 					else if (isSubElement)
 					{
@@ -364,7 +381,7 @@ public class HamTester {
 			    		t.subelements.add(currentSubElement);
 			    		
 			    		// read id and description
-						String id = line.split(" ")[1].substring(0, 2);
+						String id = GetSecondWord(line).substring(0, 2);
 						int index;
 						
 						index = ("SUBELEMENT "+ id + " - ").length();
@@ -374,6 +391,7 @@ public class HamTester {
 						if (DebugTestLoader)
 						{
 							System.out.println(currentSubElement.ID + " : " + totalquestionsloaded);
+							System.out.flush();
 						}
 						
 						currentSubElement.Description = description;
@@ -401,12 +419,13 @@ public class HamTester {
 						if (DebugTestLoader)
 						{
 							System.out.println(currentTestArea.ID + " : " + totalquestionsloaded);
+							System.out.flush();
 						}
 						
 						currentSubElement.testareas.add(currentTestArea);
 						
 					}
-				}						    	
+				}	
 		    }
 		    br.close();
 		} catch (FileNotFoundException e) {
@@ -421,6 +440,27 @@ public class HamTester {
 		return t;
 	}
 	
+	private static String GetSecondWord(String line) {
+		String outputtext = "";
+		int wordnum = 1;
+		for (int i=0;i<line.length();i++)
+		{
+			char c = line.charAt(i);
+			if (c==' ')
+			{
+				wordnum++;
+				if(wordnum > 2)
+					return outputtext;
+			}
+			else if (wordnum==2)
+			{
+				outputtext+=c;
+			}
+		}
+
+		return outputtext;	
+	}
+
 	private static String FormatString(int i) {
 		
 		String s = Integer.toString(i);
