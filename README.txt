@@ -4,7 +4,7 @@ This program was written using the Java 1.4 standard, to allow for compiling to 
 
 BUILDING
 
-Note: Building the HamTester binary requires gcj (for native binaries) and/or ant (for jar JVM builds).  Prebuilt binaries that have been tested in Windows 10 and Ubuntu 16.04/20.04 are located in the dist folder.  The prebuild jar in the dist folder was built using Java 1.8.
+Note: Building the HamTester binary requires gcj (for native binaries) and/or ant (for jar JVM builds).  Prebuilt binaries that have been tested in Windows 10 and Ubuntu 16.04/20.04 are located in the dist folder.  The prebuilt jar in the dist folder was built using Java 1.8.
 
 
 Building the HamTester jar using the build.xml file requires ant. To build a jar using the build.xml file, from the command line run:
