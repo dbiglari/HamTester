@@ -87,7 +87,7 @@ public class HamTester {
 				case '4':
 					System.out.print("Enter file name to load (absolute path or relative to current directory: "
 							+ System.getProperty("user.dir") + " ) >>>");
-					String filename = "";
+					String filename = ReadLine();
 					currentTest = LoadTest(filename);
 					return currentTest;
 				case '5':
