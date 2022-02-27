@@ -4,7 +4,7 @@ This program was written using the Java 1.4 standard, to allow for compiling to 
 
 BUILDING
 
-Note: Building a binary requires gcj (for native binaries) and/or ant (for jvm builds).  Prebuilt binaries that have been tested in Windows 10 and Ubuntu 16.04/20.04 are located in the dist folder.
+Note: Building a binary requires gcj (for native binaries) and/or ant (for jar JVM builds).  Prebuilt binaries that have been tested in Windows 10 and Ubuntu 16.04/20.04 are located in the dist folder.
 
 
 Building a jar using the build.xml file requires ant. To build a jar using the build.xml file, from the command line run:
