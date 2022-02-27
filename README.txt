@@ -9,7 +9,10 @@ Note: Building a binary requires gcj (for native binaries) and/or ant (for jar J
 
 Building a jar using the build.xml file requires ant. To build a jar using the build.xml file, from the command line run:
 
-ant
+rm -f dist/HamTester.jar
+ant -f compile_java.xml clean
+ant -f compile_java.xml
+ant -f pack_jar.xml
 
 To build a binary in Windows, from the command line run:
 
