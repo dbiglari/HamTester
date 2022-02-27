@@ -4,10 +4,10 @@ This program was written using the Java 1.4 standard, to allow for compiling to 
 
 BUILDING
 
-Note: Building a binary requires gcj (for native binaries) and/or ant (for jar JVM builds).  Prebuilt binaries that have been tested in Windows 10 and Ubuntu 16.04/20.04 are located in the dist folder.  The prebuild jar in the dist folder was built using Java 1.8.
+Note: Building the HamTester binary requires gcj (for native binaries) and/or ant (for jar JVM builds).  Prebuilt binaries that have been tested in Windows 10 and Ubuntu 16.04/20.04 are located in the dist folder.  The prebuild jar in the dist folder was built using Java 1.8.
 
 
-Building a jar using the build.xml file requires ant. To build a jar using the build.xml file, from the command line run:
+Building the HamTester jar using the build.xml file requires ant. To build a jar using the build.xml file, from the command line run:
 
 rm -f dist/HamTester.jar
 ant -f compile_java.xml clean
@@ -30,25 +30,25 @@ This will produce a Linux binary called "HamTester" in the dist folder.
 
 RUNNING THE BINARY
 
-To use the Windows binary, from the command line run:
+To use the Windows HamTester binary, from the command line run:
 
 run.bat
 
-To use the Linux binary, from the command line run:
+To use the Linux HamTester binary, from the command line run:
 
 ./run.sh
 
 
 RUNNING THE JAR
 
-Running the Jar requires a Java Runtime Environment to be installed. This can be obtained at: https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+Running the HamTester Jar requires a Java Runtime Environment to be installed. This can be obtained at: https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
 
 
-To run the jar in Windows, from the command line run:
+To run the HamTester Jar in Windows, from the command line run:
 
 runJar.bat
 
-To run the jar in Lindows, from the command line run:
+To run the HamTester Jar in Linux, from the command line run:
 
 ./runJar.sh
 
