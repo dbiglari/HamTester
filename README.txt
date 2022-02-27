@@ -39,8 +39,10 @@ To use the Linux binary, from the command line run:
 ./run.sh
 
 
-
 RUNNING THE JAR
+
+Running the Jar requires a Java Runtime Environment to be installed. This can be obtained at: https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+
 
 To run the jar in Windows, from the command line run:
 
